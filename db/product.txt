@@ -1,0 +1,12 @@
+[
+  {
+    "nombre": "prueba",
+    "precio":30,
+    "code": "prueba",
+    "thumbnail": "www.hola.com",
+    "stock": "15",
+    "detalle": "pruebaa.",
+    "id": 1,
+    "timestamp": 1672089130430
+  }
+]

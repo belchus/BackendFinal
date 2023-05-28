@@ -1,0 +1,64 @@
+<html lang="es">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </head>
+
+  <body>
+    <header id="header" >
+      <div class="menu-buttons">
+        <input  type="button"value="Back"onClick="window.location.reload()"/>
+        <input class="btn" type="button" value="cart" onClick="DetailCart()" />
+        <input class="btn" type="button" value="chat" onclick="location.href=`/chat/{{usuario}}`"/>
+        <input class="btn" type="button" value="order" onclick="location.href='/order'"/>
+      </div>
+      <h1 class="h1">Moon Accesorios</h1>
+      <div class="header-div">
+        <div class="user-options">
+          <div class="options-container">
+            <input class="btn"type="button"value="Logout"onclick="location.href='/logout'"/>
+          </div>
+          <div class="avatar-container">
+            <img class="avatar" src="/{{avatar}}" alt="" />
+          </div>
+        </div>
+      </div>
+    </header>
+    <div class="header">
+      <div class="description">
+        <div class="content">user online</div>
+        <div class="content" id="firstname">{{firstname}}</div>
+        <div class="content" id="lastname">{{lastname}}</div>
+      </div>
+      <div class="description">
+        <div class="content">email:</div>
+        <div class="content" id="username">{{user}}</div>
+      </div>
+      <div class="description">
+        <div class="content" id="rol"></div>
+      </div>
+    </div>
+    <div id="menu"></div>
+    <div class="header" id="category"></div>
+    <main id="main"></main> 
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/toastify-js"
+    ></script>
+    <script>
+      const userEmail = `{{user}}`
+      </script>
+    <script>
+      const userAddress = `{{address}}`
+    </script>
+    <script src="/js/main.js"></script>
+    <script>userType({{rol}}, {{id}})</script>
+
+  </body>
+</html>
