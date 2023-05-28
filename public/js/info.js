@@ -9,16 +9,7 @@ function serverInfo() {
   const exe = __dirname;
   const path = process.cwd();
   const id = process.pid;
-  const info = {
-    args,
-    plat,
-    version,
-    memoria,
-    exe,
-    id,
-    path,
-    numCPUs,
-  };
+  const info = {args,plat,version,memoria, exe,id,path,numCPUs};
   return info;
 }
 

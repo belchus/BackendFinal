@@ -4,7 +4,7 @@ const {auth} = require ('../utils/authModules.js')
 const prod = require('../controllers/product.js')
 
 
-router.get("/", auth, prod.allProducts);
+router.get("/",  prod.allProducts);
 
 router.get("/category/:category", auth, prod.productById)
 

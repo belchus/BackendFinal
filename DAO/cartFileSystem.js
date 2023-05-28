@@ -51,7 +51,7 @@ module.exports = class Cart {
     }
   }
 
-  async addNewCart(data) {
+  async addToCart(data) {
     await main.fileCheck(this.file);
     const carts = await this.fileCatcher(this.file);
     const cart = carts[await this.cartFinder(main.userOnline)];

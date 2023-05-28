@@ -75,7 +75,7 @@ async function getCart(id) {
 async function mainBody() {
 
   main.innerHTML = "";
-  contextMenu.innerHTML = "";
+  menu.innerHTML = "";
   if (isAdmin) {
     const cartOptions = `
         <p class="menu-name">menú administrador de ${firstname} ${lastName} </p>
@@ -83,7 +83,7 @@ async function mainBody() {
         <a class="btn" href="/info">Info del sistema</a>
         <a class="btn" href="/chat">chat(admin)</a>
         `;
-    contextMenu.innerHTML = cartOptions;
+    menu.innerHTML = cartOptions;
   }
   detailProduct(productId);
 }
@@ -503,7 +503,7 @@ async function seeCart() {
                 <input class="btn" type="button" onclick="seeCart()" name="boton" value="refresh">
                 <input class="btn" type="button" onclick="purchase()" name="boton" value="confirm">
                 `;
-    contextMenu.innerHTML = cartOptions;
+    menu.innerHTML = cartOptions;
     if (cart.error) {
       const content = `
             <div class="no-cart">
@@ -523,7 +523,7 @@ async function seeCart() {
       main.innerHTML = content;
     } else {
       main.innerHTML = "";
-      contextMenu.innerHTML = cartOptions;
+     menu.innerHTML = cartOptions;
       cart.forEach((product) => {
         document.createElement("div");
         const content = `

@@ -24,14 +24,14 @@ function admin() {
 fetch("/api/product/category")
   .then((res) => res.json())
   .then((categories) => {
-    const category = categories
+    const allcategory = categories
       .map(
         (thisCategory) => `
   <button type="button" onClick=displayCategory('${thisCategory}') class="btn">${thisCategory.toUpperCase()}</button>
   `
       )
       .join("");
-    category.innerHTML = category;
+    category.innerHTML = allcategory;
   });
 
 async function userType(tipo, id) {
@@ -104,7 +104,7 @@ async function mainBody() {
 
   const products = await getProducts();
   main.innerHTML = "";
-  contextMenu.innerHTML = "";
+  menu.innerHTML = "";
   if (isAdmin) {
     const cartOptions = `
         <p class="menu-name">menú administrador de ${firstname} ${lastName} </p>
@@ -113,7 +113,7 @@ async function mainBody() {
         <a class="btn" href="/server">server(config)</a>
         <a class="btn" href="/chat">chat(admin)</a>
         `;
-    contextMenu.innerHTML = cartOptions;
+   menu.innerHTML = cartOptions;
   }
   products.forEach((product) => {
     const addValues = { id: product.id, title: product.title };
@@ -430,7 +430,7 @@ async function createCart(id) {
   await fetch(url, options).then((response) => console.log(response.status));
   Swal.fire({
     title: "Exito!",
-    text: `El carrito ha sido creado satisfactoriamente`,
+    text: `Carrito creado`,
     icon: "success",
     confirmButtonColor: "#3085d6",
     confirmButtonText: "Home",
@@ -503,17 +503,14 @@ async function purchase() {
     products.push(listaItems);
   });
   const mail = {
-    asunto: `nuevo pedido de ${firstname} ${lastName} - (${email})`,
+    asunto: `Nuevo pedido de ${firstname} ${lastName} - (${email})`,
     msg: `
-        ${fisrtname} ${lastName}. Email: ${email}<br>
+        ${firstname} ${lastName}. Email: ${email}<br>
         con address en: ${useraddress}<br>
-        -solicita los siguientes products:<br>
+        -productos:<br>
         ${products}
-        -mensaje automatizado de alerta.
         `,
-    msgSMS: `${firstname} ${lastName}. Su pedido ha sido recibido y se encuentra en proceso. \n
-        su pedido es: \n
-        ${products}.`,
+    msgSMS: `Su pedido  encuentra en proceso. \n`,
   };
   const url = "/purchase";
   const payload = mail;
@@ -527,7 +524,7 @@ async function purchase() {
 
   Swal.fire({
     title: "confirm",
-    text: `Está a punto de Confirmar la compra`,
+    text: `confirmar`,
     icon: "warning",
     showCancelButton: true,
     confirmButtonColor: "#3085d6",
@@ -604,16 +601,14 @@ async function seeCart() {
   } else {
     const cart = await getCart(userId);
     const cartOptions = `
-                <p class="menu-name">carrito de ${firstname}</p>
                 <input class="btn" type="button" onclick="seeCart()" name="boton" value="refresh">
                 <input class="btn" type="button" onclick="purchase()" name="boton" value="confirm">
                 `;
-    contextMenu.innerHTML = cartOptions;
+    menu.innerHTML = cartOptions;
     if (cart.error) {
       const content = `
             <div class="no-cart">
             <h2 class="h2">Al parecer este carrito no existe<h3>
-            <h3 class="h3">desea crear uno?<h4>
             <input class="btn" type="button" onclick="createCart(${userId})" name="boton" value="createCart">
             </div>
             `;
@@ -629,7 +624,7 @@ async function seeCart() {
       main.innerHTML = content;
     } else {
       main.innerHTML = "";
-      contextMenu.innerHTML = cartOptions;
+      menu.innerHTML = cartOptions;
       cart.forEach((product) => {
         document.createElement("div");
         const content = `

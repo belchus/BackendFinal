@@ -53,7 +53,7 @@ async function registerGet(req, res) {
 }
 
 async function index(req, res) {
-  res.render("index.hbs", {
+  res.render("main.hbs", {
     title: "Moon Accesorios",
     user: req.user.email,
     firstname: req.user.firstname,
@@ -106,7 +106,7 @@ async function privateChat(req, res) {
       rol: userData.admin,
     },
   };
-  res.render("private.hbs", params);
+  res.render("privateChat.hbs", params);
 }
 
 
@@ -114,12 +114,12 @@ async function privateChat(req, res) {
 
 async function notifyPurchase(data) {
   const email= "arenabelu@gmail.com";
-  sendMail(data.title, data.msg, email);
+  sendEmail(data.title, data.msg, email);
   sendSMS(data.msgSMS);
 }
 
 async function order(req, res) {
-  return res.render("order.hbs", {
+  return res.render("orders.hbs", {
     firstname: req.user.firstname,
     lastname: req.user.lastname,
     email: req.user.email,

@@ -57,7 +57,7 @@ module.exports = class Container {
       }
     }
   }
-  async addNewCart(data) {
+  async addToCart(data) {
     const item = await productModel.find({ id: data.id });
     if (main.userOnline == 0) {
       return {
@@ -106,7 +106,7 @@ module.exports = class Container {
     }
   }
 
-  async deleteCart(idUser, idProd) {
+  async deleteFromCart(idUser, idProd) {
     const idUsrParsed = parseInt(idUser);
     const idPrdParsed = parseInt(idProd);
     if ((await this.cartFinder(idUser)) == 0) {

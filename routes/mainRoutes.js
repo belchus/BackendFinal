@@ -23,7 +23,7 @@ router.get("/info", main.infoserver);
 
 router.get("/register", notAuth, main.registerGet);
 
-router.post("/purchase", auth, (req, res) => {
+router.post("/purchase",notAuth , (req, res) => {
   main.notifyPurchase(req.body);
 });
 router.get("/exit", (req, res) => {
