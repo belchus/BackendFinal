@@ -46,8 +46,8 @@ app.use(passport.session());
 const initializePassport = require("./config/passport.js");
 initializePassport(
   passport,
-  (email) => user.getUserByEmail(email),
-  (id) => user.getUserById(id)
+  (email) => user.getByMail(email),
+  (id) => user.getById(id)
 );
 
 
@@ -93,18 +93,17 @@ if (mode == "CLUSTER") {
 }
 
 const usersRoutes = require("./routes/userRoutes.js");
-const chatRoutes = require("./routes/chatRoutes.js");
 const productRoutes = require("./routes/productRoutes.js");
 const cartRoutes = require("./routes/cartRoutes.js");
 const mainRoutes = require("./routes/mainRoutes.js");
 const main = require("./controllers/main.js");
 const ordersRoutes = require("./routes/orderRoutes.js");
 
-app.use("/api/product", productRoutes);
+app.use("/api/products", productRoutes);
 app.use("/api/cart", cartRoutes);
 app.use("/api/user", usersRoutes);
-app.use("/api/order", ordersRoutes);
-app.use("/api/chat", chatRoutes);
+app.use("/api/orders", ordersRoutes);
+//app.use("/api/chat", chatRoutes);
 app.use("/", mainRoutes);
 
 

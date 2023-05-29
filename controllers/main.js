@@ -97,6 +97,7 @@ async function chatCenter(req, res) {
 async function privateChat(req, res) {
   const { email } = req.params;
   const userData = await userFactory.listByMail(email);
+  console.log(userData);
   const params = {
     title: "New Message",
     user: {

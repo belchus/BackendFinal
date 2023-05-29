@@ -9,7 +9,7 @@ const array = [
     {obj: 6},
 ]
 
-fetch(`/api/order/${email}`)
+fetch(`/api/orders/${email}`)
 .then((res) => res.json())
 .then((orders) => {
     const order = orders.order.map((thisOrder) =>{

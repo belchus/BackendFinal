@@ -5,7 +5,7 @@ module.exports = class Container {
     this.model = model;
   }
 
-  async getProducts() {
+  async getAll() {
     try {
       const data = await this.model.find({});
       return data;
@@ -15,7 +15,7 @@ module.exports = class Container {
     }
   }
 
-  async getProductById(id) {
+  async getById(id) {
     try {
       const data = await this.model.find({ id: id });
       if (data.length == 0) {
@@ -56,7 +56,7 @@ module.exports = class Container {
       return { error: error };
     }
   }
-
+/*
   async getCategories() {
     try {
       const inventory = await this.getProducts();
@@ -72,7 +72,7 @@ module.exports = class Container {
       return { error: error };
     }
   }
-
+*/
   async saveProduct(object) {
     try {
       const data = await this.model.find({});

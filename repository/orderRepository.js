@@ -10,7 +10,7 @@ module.exports = class OrderRepository extends orderMongo{
         const data = await this.getOrders()
         return data
     }
-    async getByMail(email) {
+    async getOrderByMail(email) {
         const data = await this.getByMail(email)
         return data
     }

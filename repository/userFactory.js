@@ -27,6 +27,7 @@ function factoryRepository(type) {
     }
 
     async listByMail(mail) {
+      console.log("h")
       const data = await this.getByMail(mail)
       const dtoResponse = new DTO(data)
       return dtoResponse.user()

@@ -3,8 +3,14 @@ const {errorCheck} = require('../utils/errorCheck.js')
 
 async function listAll(req, res) {
     const result = await productFactory.listAll();
+    console.log(result);
     errorCheck(req, res, result)
 };
+async function listByMongoId(req, res) {
+    let {id} = req.params;
+    const resultado = await productosFactory.listByMongoId(id);
+    errorChecker(req, res, resultado)
+}
 
 async function productById(req, res) {
     let { id } = req.params;
@@ -38,4 +44,4 @@ async function deleteProduct(req, res) {
     errorCheck(req, res, result)
 }
 
-module.exports = { productById, productByCategory, allCategories, createProduct, modifyProduct, deleteProduct ,listAll}
+module.exports = { productById, productByCategory, allCategories, createProduct, modifyProduct, deleteProduct ,listAll,listByMongoId}

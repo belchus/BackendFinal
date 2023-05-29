@@ -12,7 +12,7 @@ router.get("/categories", auth, prod.allCategories)
 
 router.get("/:id", auth, prod.productById);
 
-//router.get("/mongo/:id", auth, prod.By);
+router.get("/mongo/:id", auth, prod.listByMongoId);
 
 router.post("/", auth, prod.createProduct);
 

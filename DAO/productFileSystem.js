@@ -10,7 +10,7 @@ module.exports = class Container {
     this.file = file;
   }
 
-  async getProducts() {
+  async getAll() {
     await main.fileCheck(this.file);
     try {
       const file = await fs.promises.readFile(this.file, "utf-8");
@@ -49,7 +49,7 @@ module.exports = class Container {
       return {error: error}
     }
   }
-
+/*
   async getByCategory(category) {
     await main.fileCheck(this.file);
     try {
@@ -80,7 +80,7 @@ module.exports = class Container {
       return { error: error };
     }
   }
-
+*/
   async saveProduct(object) {
     await main.fileCheck(this.file);
     try {

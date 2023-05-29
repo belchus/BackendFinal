@@ -3,12 +3,12 @@ const chat = new chatRepo();
 
 async function allchannels() {
 
-  const result = await chat.getAllchannels();
+  const result = await chat. getAllChannels();
 return result;
 }
 
 async function thischannel(email) {
-  const result = await chat.getchannelByMail(email);
+  const result = await chat.getChannelByMail(email);
   return result;
 }
 

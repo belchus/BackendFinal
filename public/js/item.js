@@ -39,7 +39,6 @@ async function userType(tipo, id) {
     userId = await id;
   }
 }
-
 async function getProducts() {
   let product = await fetch("/api/products");
   let data = await product.json();
@@ -493,14 +492,14 @@ async function purchase() {
   });
 }
 
-async function seeCart() {
+async function DetailCart() {
   if (userId == 0) {
     alert("no hay ningun usuario logueado");
   } else {
     const cart = await getCart(userId);
     const cartOptions = `
                 <p class="menu-name">carrito de ${firstname}</p>
-                <input class="btn" type="button" onclick="seeCart()" name="boton" value="refresh">
+                <input class="btn" type="button" onclick="DetailCart()" name="boton" value="refresh">
                 <input class="btn" type="button" onclick="purchase()" name="boton" value="confirm">
                 `;
     menu.innerHTML = cartOptions;
@@ -569,7 +568,7 @@ async function deleteFromCart(id, title) {
       background: "linear-gradient(45deg, cornflowerblue, darkslateblue)",
     },
   }).showToast();
-  seeCart();
+  DetailCart();
 }
 
 async function deleteCart(id) {

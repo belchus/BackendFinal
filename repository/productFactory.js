@@ -28,11 +28,22 @@ function factoryRepository(type) {
       super(source);
     }
     async listAll() {
-      const data = await this.getProducts();
+      const data = [
+        {
+          "title": "prueba",
+          "price":30,
+          "code": "prueba",
+          "thumbnail": "www.hola.com",
+          "stock": "15",
+          "description": "pruebaa.",
+          "id": 1,
+          "timestamp": 1672089130430
+        }
+      ]
       const dtoResponse = new DTO(data)
       return dtoResponse.allProducts();
     }
-    async listById(id) {
+    async productById(id) {
       const data = await this.getById(id);
       const dtoResponse = new DTO(data)
       return dtoResponse.product();

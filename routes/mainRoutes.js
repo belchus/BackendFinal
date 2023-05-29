@@ -37,6 +37,15 @@ router.get("/logout", auth, (req, res) => {
   });
 });
 
+//rutas del canal de chat
+router.get("/chat", auth, main.chatCenter);
+router.get("/chat/:email", main.privateChat);
+
+//ruta para visualizar las órdenes(para frontend)
+router.get('/orders', auth, main.order)
+
+//ruta para visualizar la configuración del servidor (frontend)
+router.get('/server', auth, main.server)
 
 
 module.exports = router;

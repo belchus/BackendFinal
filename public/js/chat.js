@@ -1,7 +1,7 @@
 const socket = io.connect();
 
 const channel = document.getElementById("channel");
-constinbox = document.getElementById("thisinbox");
+const inbox = document.getElementById("thisinbox");
 const contentMsg = document.getElementById("contentMsg");
 const send = document.getElementById("send");
 const channelTitl = document.getElementById("channelTitl");

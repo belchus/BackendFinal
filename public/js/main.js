@@ -20,8 +20,8 @@ function admin() {
   }
 }
 
-
-fetch("/api/product/category")
+/*
+fetch("/api/products/category")
   .then((res) => res.json())
   .then((categories) => {
     const allcategory = categories
@@ -33,7 +33,7 @@ fetch("/api/product/category")
       .join("");
     category.innerHTML = allcategory;
   });
-
+*/
 async function userType(tipo, id) {
   const userType = document.getElementById("rol");
   if ((await tipo) == "true" || (await tipo) == true) {
@@ -67,6 +67,7 @@ async function updateUser(id) {
 
 async function getProducts() {
   let product = await fetch("/api/products");
+  console.log(product);
   let data = await product.json();
   return data;
 }
@@ -91,7 +92,7 @@ async function getCart(id) {
 
 async function mainBody() {
   Toastify({
-    text: ` (${firstname})is online`,
+    text: ` ${lastName} is online`,
     className: "info",
     position: "right",
     gravity: "bottom",
@@ -557,7 +558,7 @@ async function purchase() {
 }
 
 async function newOrder(order) {
-  const url = "/api/order";
+  const url = "/api/orders";
   const payload = order;
   const options = {
     method: "POST",
@@ -594,15 +595,15 @@ async function deleteFromCart(id,title) {
       background: "linear-gradient(45deg, cornflowerblue, darkslateblue)",
     },
   }).showToast();
-  seeCart();
+  DetailCart();
 }
-async function seeCart() {
+async function DetailCart() {
   if (userId == 0) {
     alert("no hay ningun usuario logueado");
   } else {
     const cart = await getCart(userId);
     const cartOptions = `
-                <input class="btn" type="button" onclick="seeCart()" name="boton" value="refresh">
+                <input class="btn" type="button" onclick="DetailCart()" name="boton" value="refresh">
                 <input class="btn" type="button" onclick="purchase()" name="boton" value="confirm">
                 `;
     menu.innerHTML = cartOptions;
