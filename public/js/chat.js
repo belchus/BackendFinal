@@ -1,12 +1,12 @@
 const socket = io.connect();
-
 const channel = document.getElementById("channel");
 const inbox = document.getElementById("thisinbox");
-const contentMsg = document.getElementById("contentMsg");
+const contentMsg = document.getElementById("chat-imput");
 const send = document.getElementById("send");
 const channelTitl = document.getElementById("channelTitl");
 
-let setchannel;
+let channelUser;
+
 
 function setUserType(type) {
   if (type === "true") {
@@ -31,24 +31,24 @@ contentMsg.addEventListener("keyup", () => {
 
 send.addEventListener("click", () => {
   const msg = {
-    destiny: setchannel,
+    to: channelUser,
     firstname: `${thisUser.firstname} ${thisUser.lastname}`,
     email: thisUser.user,
     rol: setUserType(thisUser.tipo),
     msg: contentMsg.value,
   };
-  socket.emit("new message", msg);
+  socket.emit("new-message", msg);
   contentMsg.value = "";
   functionImputs();
 });
 
 socket.on("channels", (channels) => {
-  setchannel = thisUser.usuario;
+  channelUser = thisUser.user;
   allChannels = channels
     .map(
-      (usuario) => `
+      (user) => `
     <div id=${user.email} >
-    <div> <br> ${usuario.firstname} </div>
+    <div> <br> ${user.firstname} </div>
     <div>${user.email}</div>
     <div>tipo: ${user.rol}</div>
     </div>
@@ -60,7 +60,7 @@ socket.on("channels", (channels) => {
   const channelButtons = document.querySelectorAll(".open-channel");
   channelButtons.forEach((button) => {
     button.addEventListener("click", () => {
-      thisChannel = button.id;
+      channelUser = button.id;
       const channeled = `canal de ${button.id} seleccionado`;
       channelTitl.innerHTML = channeled;
       socket.emit("join-room", button.id);
@@ -69,8 +69,8 @@ socket.on("channels", (channels) => {
   });
 });
 
-socket.on("Inbox", (msg) => {
-  const Inbox = msg
+socket.on("recibir-mensajes", (msg) => {
+  const inboxs = msg
     .map(
       (msg) => 
       ` <div class=msg-container-${msg.rol}>

@@ -4,3 +4,7 @@
 {"kind":"Number","message":"Cast to Number failed for value \"category\" (type string) at path \"id\" for model \"products\"","name":"CastError","path":"id","reason":{"actual":false,"code":"ERR_ASSERTION","expected":true,"generatedMessage":true,"operator":"=="},"stringValue":"\"category\"","value":"category","valueType":"string"}
 {"kind":"Number","message":"Cast to Number failed for value \"category\" (type string) at path \"id\" for model \"products\"","name":"CastError","path":"id","reason":{"actual":false,"code":"ERR_ASSERTION","expected":true,"generatedMessage":true,"operator":"=="},"stringValue":"\"category\"","value":"category","valueType":"string"}
 {"kind":"Number","message":"Cast to Number failed for value \"category\" (type string) at path \"id\" for model \"products\"","name":"CastError","path":"id","reason":{"actual":false,"code":"ERR_ASSERTION","expected":true,"generatedMessage":true,"operator":"=="},"stringValue":"\"category\"","value":"category","valueType":"string"}
+{"level":"error"}
+{"level":"error"}
+{"level":"error"}
+{"level":"error"}

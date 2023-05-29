@@ -84,7 +84,7 @@ async function mainBody() {
         `;
     menu.innerHTML = cartOptions;
   }
-  detailProduct(productId);
+  viewProduct(productId);
 }
 
 async function displayCategory(category) {
@@ -108,7 +108,7 @@ async function displayCategory(category) {
         <input class="input-number" id="cant${product.id}" onkeydown="return false" step="1" min="1" max="${product.stock}" value="1" type="number" name="cantidad">
         <input class="btn" type="submit" onclick="addToCart(${product.id},'${product.title}')", name="boton" value="addToCart">
     </div>
-    <input class="btn" type="button" onclick="detailProduct(${product.id})" name="boton" value="ver product">
+    <input class="btn" type="button" onclick="viewProductct(${product.id})" name="boton" value="ver product">
 </div>
 `;
     main.innerHTML += content;
@@ -281,7 +281,7 @@ async function updateProduct(id) {
   });
 }
 
-async function detailProduct(id) {
+async function viewProductct(id) {
   const product = await getProduct(id);
 
   if(product.error) {
@@ -376,7 +376,7 @@ async function createCart(id) {
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({id: id, email: userEmail, address: useraddress})
+    body: JSON.stringify({id: id, email: userEmail, address: userAddress})
   };
   await fetch(url, options).then((response) => console.log(response.status));
   Swal.fire({
@@ -401,7 +401,7 @@ async function addToCart(id, title) {
     id: id,
     cantidad: parseInt(document.getElementById(`cant${id}`).value),
     email: userEmail,
-    address: useraddress,
+    address: userAddress,
   };
   const options = {
     method: "POST",

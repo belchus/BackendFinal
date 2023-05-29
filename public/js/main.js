@@ -85,7 +85,7 @@ async function getProductsByCat(category) {
 }
 
 async function getCart(id) {
-  let cart = await fetch(`api/cart/${id}/product/`);
+  let cart = await fetch(`api/cart/${id}/products/`);
   let data = await cart.json();
   return data;
 }
@@ -135,7 +135,7 @@ async function mainBody() {
         <input class="input-number" id="cant${product.id}" onkeydown="return false" step="1" min="1" max="${product.stock}" value="1" type="number" name="cantidad">
         <input class="btn" type="submit" onclick="addToCart(${product.id},'${product.title}')", name="boton" value="addToCart">
     </div>
-    <input class="btn" type="button" onclick="detailProduct(${product.id})" name="boton" value="ver product">
+    <input class="btn" type="button" onclick="viewProductct(${product.id})" name="boton" value="ver product">
 </div>
 `;
     main.innerHTML += content;
@@ -163,7 +163,7 @@ async function displayCategory(category) {
         <input class="input-number" id="cant${product.id}" onkeydown="return false" step="1" min="1" max="${product.stock}" value="1" type="number" name="cantidad">
         <input class="btn" type="submit" onclick="addToCart(${product.id},'${product.title}')", name="boton" value="addToCart">
     </div>
-    <input class="btn" type="button" onclick="detailProduct(${product.id})" name="boton" value="ver product">
+    <input class="btn" type="button" onclick="viewProductct(${product.id})" name="boton" value="ver product">
 </div>
 `;
     main.innerHTML += content;
@@ -426,7 +426,7 @@ async function createCart(id) {
     body: JSON.stringify({
       id: id,
       email: userEmail,
-      address: useraddress,
+      address: userAddress,
     }),
   };
   await fetch(url, options).then((response) => console.log(response.status));
@@ -452,7 +452,7 @@ async function addToCart(id, title) {
     id: id,
     cantidad: parseInt(document.getElementById(`cant${id}`).value),
     email: userEmail,
-    address: useraddress,
+    address: userAddress,
   };
   const options = {
     method: "POST",
@@ -508,7 +508,7 @@ async function purchase() {
     asunto: `Nuevo pedido de ${firstname} ${lastName} - (${email})`,
     msg: `
         ${firstname} ${lastName}. Email: ${email}<br>
-        con address en: ${useraddress}<br>
+        con address en: ${userAddress}<br>
         -productos:<br>
         ${products}
         `,

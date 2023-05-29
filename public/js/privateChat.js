@@ -1,9 +1,8 @@
 const socket = io.connect();
-
 const inbox = document.getElementById("thisinbox");
 const contentMsg = document.getElementById("chat-imput");
 const send = document.getElementById("send");
-const thisChannel = thisUser.usuario;
+const channelEmail = thisUser.user;
 
 function setUserType(type) {
   if (type === "true") {
@@ -28,13 +27,13 @@ contentMsg.addEventListener("keyup", () => {
 
 send.addEventListener("click", () => {
   const msg = {
-    to: thisChannel,
+    to: channelEmail,
     firstname: `${thisUser.firstname} ${thisUser.lastname}`,
     email: thisUser.user,
     rol: setUserType(thisUser.rol),
     msg: contentMsg.value,
   };
-  socket.emit("new message", msg);
+  socket.emit("new-message", msg);
   contentMsg.value = "";
   functionImputs();
 });
@@ -42,7 +41,7 @@ send.addEventListener("click", () => {
 
 socket.on("start", (msg) => {
   socket.emit("join-room", thisUser.user);
-  socket.emit("single-channel", thisUser.usuario);
+  socket.emit("single-channel", thisUser.user);
 });
 
 socket.on("channel", (msg) => {
@@ -59,7 +58,8 @@ socket.on("channel", (msg) => {
     .join("");
  inbox.innerHTML =inboxs;
 });
-socket.on("recibir-msgs", (msg) => {
+
+socket.on("recibir-mensajes", (msg) => {
   const inboxs =msg
     .map(
       (msg) => `

@@ -25,12 +25,12 @@ function factoryRepository(type) {
     constructor(source) {
       super(source);
     }
-    async getCarts() {
+    async getallCarts() {
       const data = await this.getCarts();
       const dtoResponse = new DTO(data)
       return dtoResponse.allCarts();
     }
-    async getById(id) {
+    async listgetById(id) {
       const data = await this.getById(id);
       const dtoResponse = new DTO(data)
       return dtoResponse.Cart();
@@ -40,7 +40,7 @@ function factoryRepository(type) {
       return data;
     }
     async updateThisCart(payload) {
-      const data = await this.addNewCart(payload);
+      const data = await this.addToCart(payload);
       return data;
     }
     async deleteThisCart(id) {
@@ -48,7 +48,7 @@ function factoryRepository(type) {
       return data;
     }
     async deleteThisProduct(idUser, idProd) {
-      const data = await this.deleteProduct(idUser, idProd);
+      const data = await this.deleteFromProduct(idUser, idProd);
       return data;
     }
   }

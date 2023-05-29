@@ -16,10 +16,10 @@ module.exports = (io) => {
     socket.on("single-channel", async (email) => {
       socket.emit('channel', await thischannel(email))
     })
-    socket.emit("start", "canal")
+    socket.emit("start", "channel")
     socket.on("new-message", async (msg) => {
       await sendMessage(msg);
-      io.to(msg.to).emit('recibir-msgs', await thisChannel(msg.to))
+      io.to(msg.to).emit('recibir-mensajes', await thischannel(msg.to))
       socket.emit("channels", await allchannels());
     });
     socket.on('change-room', async (room) => {

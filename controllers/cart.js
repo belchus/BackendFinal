@@ -4,32 +4,32 @@ const {cartFactory} = require('../repository/cartFactory.js')
 
 
 async function allCarts(req, res) {
-  const result = await cartFactory.listAll();
+  const result = await cartFactory.getallCarts();
   errorCheck(req, res, result)
 }
 
 async function cartById(req, res) {
-  const result = await cartFactory.listById(req.params.id);
+  const result = await cartFactory.listgetById(req.params.id);
   errorCheck(req, res, result)
 }
 
 async function addCart(req, res) {
-  const result = await cartFactory.createCart(req.body);
+  const result = await cartFactory.addThisCart(req.body);
   errorCheck(req, res, result)
 }
 
 async function addProduct(req, res) {
-  const result = await cartFactory.updateCart(req.body);
+  const result = await cartFactory.updateThisCart(req.body);
   errorCheck(req, res, result)
 }
 
 async function deleteCart(req, res) {
-  const result = await cartFactory.removeCart(req.params.id);
+  const result = await cartFactory.deleteThisCart(req.params.id);
   errorCheck(req, res, result)
 }
 
 async function removeProductById(req, res) {
-  const result = await cartFactory.removeProduct(
+  const result = await cartFactory.deleteThisProduct(
     req.params.id,
     req.params.id_prod
   );
