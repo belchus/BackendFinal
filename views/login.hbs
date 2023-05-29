@@ -11,7 +11,7 @@
     {{#if msg.error}}
       <h3 class="error">{{msg.error}}</h3>
     {{/if}}
-    <form id="login-form" class="login-vertical" action="api/user/login" method="POST">
+    <form id="login-form" class="login-vertical" action="/api/user/login" method="POST">
       <h2 class="login-title">LogIn</h2>
       <label for="email">Email</label>
       <input
@@ -29,7 +29,7 @@
         name="password"
         required
       />
-      <button class="btn" id="btn" type="submit">Login</button>
+      <button class="btn" id="btn" type="submit" onclick="login()">Login</button>
     </form>
     <button class="btn" onclick="location.href='/register'" type="button">Register</button>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>

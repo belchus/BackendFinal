@@ -1,4 +1,4 @@
-const { error } = require("winston");
+
 
 const main = document.getElementById("main");
 const status = document.getElementById("status");
@@ -49,6 +49,7 @@ async function userType(tipo, id) {
 }
 
 async function updateUser(id) {
+  console.log("hola");
   const url = "api/user/login";
   const payload = {
     id: id,

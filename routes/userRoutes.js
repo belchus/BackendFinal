@@ -17,4 +17,6 @@ router.delete("/:id", notAuth, user.deleteUser);
 
 router.post('/login',user.login)
 
+router.get("/login", auth, user.userById);
+
 module.exports = router;

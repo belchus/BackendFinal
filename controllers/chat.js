@@ -2,8 +2,9 @@ const chatRepo = require("../repository/ChatRepository.js");
 const chat = new chatRepo();
 
 async function allchannels() {
+
   const result = await chat.getAllchannels();
-  return result;
+return result;
 }
 
 async function thischannel(email) {

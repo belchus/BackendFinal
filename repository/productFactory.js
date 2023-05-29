@@ -18,7 +18,7 @@ function factoryRepository(type) {
     if (type === "dev") {
       return new Repository(file);
     } else if (type === "prod") {
-      return new Repository(file);
+      return new Repository(model);
     }
   };
   class Repository extends (extention
@@ -68,6 +68,6 @@ function factoryRepository(type) {
   }
 }
 
-var productsFactory = new factoryRepository(run).createRepository();
+var productFactory = new factoryRepository(run).createRepository();
 
-module.exports = { productsFactory };
+module.exports = { productFactory };

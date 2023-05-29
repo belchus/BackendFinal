@@ -1,8 +1,8 @@
 const {productFactory} = require('../repository/productFactory.js')
 const {errorCheck} = require('../utils/errorCheck.js')
 
-async function allProducts(req, res) {
-    const result = await productFactory.allProducts();
+async function listAll(req, res) {
+    const result = await productFactory.listAll();
     errorCheck(req, res, result)
 };
 
@@ -38,4 +38,4 @@ async function deleteProduct(req, res) {
     errorCheck(req, res, result)
 }
 
-module.exports = { productById, productByCategory, allCategories, createProduct, modifyProduct, deleteProduct ,allProducts}
+module.exports = { productById, productByCategory, allCategories, createProduct, modifyProduct, deleteProduct ,listAll}

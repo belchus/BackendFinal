@@ -1,6 +1,4 @@
 const multer = require("multer");
-
-//storage local con multer
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
       cb(null, "./public/avatars");
